@@ -15,8 +15,12 @@ This Power BI dashboard provides insights across multiple domains:
 
 ## Files Included
 
-- `Final Power Bi File.pbix` - Main Power BI dashboard file
+- `Final Power Bi File.pbix` - Main Power BI dashboard file (11 MB)
 - `README.md` - This documentation
+- `ALL_DAX_Measures_By_Table.txt` - 74 DAX formulas organized by table with full code
+- `ALL_Tables_Measures_Complete_Reference.txt` - Complete reference guide with KPI targets
+- `PowerBI_Visual_Recommendations.txt` - Detailed visualization upgrade recommendations
+- `PowerBI_Visual_Recommendations.csv` - Spreadsheet version of visual recommendations
 
 ## Data Sources
 
