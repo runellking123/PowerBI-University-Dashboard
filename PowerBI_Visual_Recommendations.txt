@@ -1,0 +1,812 @@
+================================================================================
+POWER BI VISUALIZATION RECOMMENDATIONS
+Complete Guide for Dashboard Improvement
+================================================================================
+Created: 2025-11-14
+Total Cards Analyzed: 57 across 7 tabs
+Recommended Visuals: Mix of Gauges, Charts, Graphs for better insights
+
+PURPOSE: Transform all card visuals into more insightful, interactive
+visualizations that reveal trends, patterns, and comparisons.
+
+================================================================================
+TAB 1: ENROLLMENT PROFILE (17 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Total Students (993)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY YEAR
+Why: Shows enrollment trends over time, making growth/decline visible
+
+STEPS TO CREATE:
+1. Click the current card visual
+2. Select Clustered Column Chart from Visualizations pane
+3. Add yr_cde (Year) to X-axis
+4. Add Total Students measure to Y-axis
+5. Add data labels: Format > Data labels > On
+6. Optional: Add trend line via Analytics pane
+7. Title: "Total Student Enrollment by Year"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2-3. Full-Time Students (956) + Part-Time Students (33)
+───────────────────────────────────────────────────────────────────────────────
+Current: 2 separate cards
+Recommended: STACKED BAR CHART (FT vs PT combined)
+Why: Compares Full-Time and Part-Time students side by side
+
+STEPS TO CREATE:
+1. Delete both card visuals
+2. Create a Stacked Bar Chart
+3. Add 'Student Type' to Axis (you may need to create a calculated column)
+4. Add Count of Students to Values
+5. Format with contrasting colors (Blue for FT, Orange for PT)
+6. Add data labels showing both counts and percentages
+7. Title: "Full-Time vs Part-Time Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+4. Graduate Students (138)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: DONUT CHART BY CLASS LEVEL
+Why: Shows proportion of FR/SO/JR/SR/GR students at a glance
+
+STEPS TO CREATE:
+1. Click the visual
+2. Select Donut Chart from Visualizations pane
+3. Add Class Level (CLS_CDE) to Legend
+4. Add Student Count to Values
+5. Format to show percentages
+6. Add legend on right side
+7. Title: "Student Distribution by Class Level"
+
+
+───────────────────────────────────────────────────────────────────────────────
+5. Student-to-Faculty Ratio (5.3)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH TARGET
+Why: Visual indicator if ratio is within healthy range (target: 15-20:1)
+
+STEPS TO CREATE:
+1. Select Gauge Chart from Visualizations
+2. Add Student-to-Faculty Ratio measure to Value
+3. Set Minimum value: 0
+4. Set Maximum value: 30
+5. Set Target value: 17 (ideal ratio)
+6. Format callout value to show current ratio prominently
+7. Title: "Student-to-Faculty Ratio"
+
+
+───────────────────────────────────────────────────────────────────────────────
+6. Transfer Students (114)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED BAR CHART (Transfer vs Non-Transfer)
+Why: Compares transfer vs traditional students
+
+STEPS TO CREATE:
+1. Select Clustered Bar Chart
+2. Add 'Student Type' (Transfer/Non-Transfer) to Axis
+3. Add Student Count to Values
+4. Format bars with distinct colors
+5. Add data labels
+6. Title: "Transfer vs Traditional Students"
+
+
+───────────────────────────────────────────────────────────────────────────────
+7-8. Male Students (431) + Female Students (555)
+───────────────────────────────────────────────────────────────────────────────
+Current: 2 separate cards
+Recommended: DONUT CHART (Gender Distribution combined)
+Why: Shows gender balance as proportions, easier to interpret
+
+STEPS TO CREATE:
+1. Delete both card visuals
+2. Select Donut Chart
+3. Add Gender field to Legend
+4. Add Student Count to Values
+5. Format to show percentages and values
+6. Use blue for Male, pink/purple for Female
+7. Title: "Student Gender Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+9. Average Student Age (24.9)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: HISTOGRAM (Age Distribution)
+Why: Shows age ranges and identifies traditional vs non-traditional students
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Create Age Buckets field (18-22, 23-25, 26-30, 31+)
+3. Add Age Bucket to X-axis
+4. Add Count of Students to Y-axis
+5. Add vertical line at age 24 (traditional student cutoff)
+6. Title: "Student Age Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+10-12. Residential (684) + Commuter (146) + Resident Students (18)
+───────────────────────────────────────────────────────────────────────────────
+Current: 3 separate cards
+Recommended: STACKED COLUMN CHART (Housing Status combined)
+Why: Compares all housing statuses in one view
+
+STEPS TO CREATE:
+1. Delete all three card visuals
+2. Select Stacked Column Chart
+3. Add Residential Status to Legend
+4. Add Student Count to Values
+5. Format with distinct colors
+6. Show both percentages and values
+7. Title: "Student Housing Status"
+
+
+───────────────────────────────────────────────────────────────────────────────
+13. Average Career GPA (2.08)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH THRESHOLDS
+Why: Shows if GPA is in healthy range (target: 2.8-3.2)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Average Career GPA to Value
+3. Set Min: 0.0, Max: 4.0
+4. Add color coding: Red <2.0, Yellow 2.0-2.7, Green >2.8
+5. Set target: 2.8
+6. Title: "Average Career GPA"
+
+
+───────────────────────────────────────────────────────────────────────────────
+14. Average Credit Hours Enrolled (14.4)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY TERM
+Why: Shows credit hour trends across terms
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Term (trm_cde) to X-axis
+3. Add Average Credit Hours Enrolled to Y-axis
+4. Add reference line at 12 credits (full-time threshold)
+5. Format with data labels
+6. Title: "Average Credit Hours by Term"
+
+
+───────────────────────────────────────────────────────────────────────────────
+15. Average Career Hours Attempted (43.9)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: LINE CHART OVER TIME
+Why: Shows progression of attempted hours
+
+STEPS TO CREATE:
+1. Select Line Chart
+2. Add yr_cde (Year) to X-axis
+3. Add Average Career Hours Attempted to Y-axis
+4. Add markers to line
+5. Format line as smooth curve
+6. Title: "Career Hours Attempted Trend"
+
+
+───────────────────────────────────────────────────────────────────────────────
+16. Average Career Hours Earned (40.8)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART (Attempted vs Earned)
+Why: Compares attempted vs earned to show completion efficiency
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Metric Type to X-axis (Attempted/Earned)
+3. Add Hours to Y-axis
+4. Add data labels on bars
+5. Calculate gap between bars to show credits lost
+6. Title: "Credit Hours: Attempted vs Earned"
+
+
+───────────────────────────────────────────────────────────────────────────────
+17. First-Time Freshman Students (174)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: AREA CHART BY YEAR
+Why: Shows freshman cohort size trends over years
+
+STEPS TO CREATE:
+1. Select Area Chart
+2. Add Year to X-axis
+3. Add First-Time Freshman count to Y-axis
+4. Fill area with solid school color
+5. Add data labels at peak points
+6. Title: "First-Time Freshman Cohort by Year"
+
+
+================================================================================
+TAB 2: STUDENT INFORMATION (5 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Fall-to-Fall Retention Rate (57.2%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH TARGET
+Why: Shows retention against benchmark (target: 75-85%)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Fall-to-Fall Retention Rate to Value
+3. Set Min: 0%, Max: 100%
+4. Set target: 80% (industry standard)
+5. Color code: Red <60%, Yellow 60-75%, Green >75%
+6. Title: "Fall-to-Fall Retention Rate"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2. Term-to-Term Persistence Rate (100.0%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: LINE CHART BY TERM
+Why: Shows persistence trends across terms (100% seems unusual, check data)
+
+STEPS TO CREATE:
+1. Select Line Chart
+2. Add Term to X-axis
+3. Add Term-to-Term Persistence Rate to Y-axis
+4. Add reference line at 85% (target)
+5. Format to show percentages
+6. Title: "Term Persistence Rate Trend"
+
+
+───────────────────────────────────────────────────────────────────────────────
+3. Average Number of Courses (4.7)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: HISTOGRAM (Course Load Distribution)
+Why: Shows distribution of how many courses students actually take
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Create Course Load Buckets (1-2, 3-4, 5-6, 7+)
+3. Add Bucket to X-axis
+4. Add Student Count to Y-axis
+5. Highlight 4-5 courses as typical full-time load
+6. Title: "Course Load Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+4. Term Credit Success Rate (76.2%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH BENCHMARK
+Why: Visual indicator of success rate against target (80%)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Term Credit Success Rate to Value
+3. Set Min: 0%, Max: 100%
+4. Set target: 80%
+5. Add color thresholds
+6. Title: "Term Credit Success Rate"
+
+
+───────────────────────────────────────────────────────────────────────────────
+5. Average Transfer GPA (0.96)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: KPI VISUAL WITH TREND
+Why: Shows transfer GPA with trend indicator (0.96 seems low, verify data)
+
+STEPS TO CREATE:
+1. Select KPI visual
+2. Add Average Transfer GPA to Indicator
+3. Add Year to Trend axis
+4. Set target: 2.5
+5. Format to 2 decimals
+6. Title: "Transfer Student GPA"
+
+
+================================================================================
+TAB 3: STUDENT COURSE HISTORY & GRADES (15 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1-5. A/B/C/D/F Grades Count (Midterm)
+───────────────────────────────────────────────────────────────────────────────
+Current: 5 separate cards
+Recommended: STACKED BAR CHART (Grade Distribution combined)
+Why: Shows complete A-F grade distribution at a glance
+
+STEPS TO CREATE:
+1. Delete all 5 card visuals
+2. Select Stacked Bar Chart
+3. Add Grade (A/B/C/D/F) to Axis
+4. Add Count to Values
+5. Sort by grade A to F
+6. Use color gradient (green for A to red for F)
+7. Title: "Midterm Grade Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+6-7. W Grades Count (Midterm: 18, Final: 150)
+───────────────────────────────────────────────────────────────────────────────
+Current: 2 separate cards
+Recommended: LINE CHART (W grades over time)
+Why: Tracks withdrawal trends to identify concerning patterns
+
+STEPS TO CREATE:
+1. Select Line Chart
+2. Add Term to X-axis
+3. Add W Grades Count to Y-axis (both midterm and final as 2 lines)
+4. Add markers
+5. Format with warning color (orange)
+6. Title: "Course Withdrawals by Term"
+
+
+───────────────────────────────────────────────────────────────────────────────
+8. DFW Rate (1.7%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH THRESHOLD
+Why: Shows DFW against acceptable limit (target: <15%)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add DFW Rate to Value
+3. Set Min: 0%, Max: 30%
+4. Set target: 12%
+5. Color: Green <12%, Yellow 12-18%, Red >18%
+6. Title: "DFW Rate (At-Risk Indicator)"
+
+
+───────────────────────────────────────────────────────────────────────────────
+9. Pass Rate (4.0%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART
+Why: Visualizes pass rate against target (75% - note: 4% seems too low)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Pass Rate to Value
+3. Set Min: 0%, Max: 100%
+4. Set target: 75%
+5. Add color thresholds
+6. Title: "Course Pass Rate"
+
+
+───────────────────────────────────────────────────────────────────────────────
+10. Students Failing at Midterm (508)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: FUNNEL CHART (Midterm to Final progression)
+Why: Shows how many students recovered from failing midterm
+
+STEPS TO CREATE:
+1. Select Funnel Chart
+2. Add Stage (Failing Midterm → Passing Final) to Category
+3. Add Student Count to Values
+4. Format to show conversion rate
+5. Highlight intervention success
+6. Title: "Midterm Intervention Success"
+
+
+───────────────────────────────────────────────────────────────────────────────
+11-15. A/B/C/D/F Grades Count (Final)
+───────────────────────────────────────────────────────────────────────────────
+Current: 5 separate cards
+Recommended: STACKED BAR CHART (Final Grade Distribution)
+Why: Shows complete final grade distribution
+
+STEPS TO CREATE:
+1. Delete all 5 cards
+2. Select Stacked Bar Chart
+3. Add Final Grade to Axis
+4. Add Count to Values
+5. Use color gradient (green to red)
+6. Compare to midterm distribution
+7. Title: "Final Grade Distribution"
+
+
+================================================================================
+TAB 4: FACULTY COURSE LOAD (6 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Average Load Percentage by Instructor (4432.3%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: HISTOGRAM (Faculty Load Distribution)
+Why: Shows how loads are distributed across faculty (4432% seems incorrect)
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Create Load Buckets (0-50%, 51-100%, 101-150%, >150%)
+3. Add Bucket to X-axis
+4. Add Faculty Count to Y-axis
+5. Highlight 100% as full load
+6. Title: "Faculty Load Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2. Total Course Sections Taught (1,277)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: AREA CHART BY TERM
+Why: Shows section offerings over time
+
+STEPS TO CREATE:
+1. Select Area Chart
+2. Add Term to X-axis
+3. Add Total Sections to Y-axis
+4. Fill with solid color
+5. Add trend line
+6. Title: "Course Sections Offered by Term"
+
+
+───────────────────────────────────────────────────────────────────────────────
+3. Total Faculty (79)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY DEPARTMENT
+Why: Compares faculty count across departments
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Department to X-axis
+3. Add Faculty Count to Y-axis
+4. Sort descending by count
+5. Add data labels
+6. Title: "Faculty Count by Department"
+
+
+───────────────────────────────────────────────────────────────────────────────
+4-5. Faculty with Partial Load (22) + Faculty with 100% Load (75)
+───────────────────────────────────────────────────────────────────────────────
+Current: 2 separate cards
+Recommended: DONUT CHART (Load Status combined)
+Why: Shows proportion of Full/Partial/Overload faculty
+
+STEPS TO CREATE:
+1. Delete both cards
+2. Select Donut Chart
+3. Add Load Status to Legend
+4. Add Faculty Count to Values
+5. Show percentages
+6. Use traffic light colors
+7. Title: "Faculty Load Status Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+6. Unique Courses Taught (494)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: TREE MAP BY DEPARTMENT
+Why: Shows course variety by department size
+
+STEPS TO CREATE:
+1. Select Tree Map
+2. Add Department to Category
+3. Add Unique Courses to Values
+4. Size blocks by course count
+5. Color by department
+6. Title: "Unique Courses by Department"
+
+
+================================================================================
+TAB 5: DEGREE HISTORY (2 CARDS + 1 TABLE)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Total # Degrees Conferred (575)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY YEAR
+Why: Shows degree conferral trends over years
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Year to X-axis
+3. Add Total Degrees to Y-axis
+4. Add trend line
+5. Add data labels
+6. Title: "Degrees Conferred by Year"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2. Average Time to Degree (4.33 years)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH TARGET
+Why: Shows time to degree vs 4-year standard
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Average Time to Degree to Value
+3. Set Min: 2, Max: 8 years
+4. Set target: 4.0 years
+5. Color: Green ≤4, Yellow 4-5, Red >5
+6. Title: "Average Time to Degree (Years)"
+
+
+───────────────────────────────────────────────────────────────────────────────
+3. Degrees by Major/Division/Degree Code (Table)
+───────────────────────────────────────────────────────────────────────────────
+Current: Table
+Recommended: KEEP AS TABLE BUT ENHANCE
+Why: Table is appropriate for detailed breakdown
+
+STEPS TO ENHANCE:
+1. Select the existing table
+2. Click Format pane
+3. Enable Conditional Formatting on Total Degrees column
+4. Add Data Bars (gradient from light to dark)
+5. Sort by Total Degrees descending
+6. Add column totals at bottom
+7. Consider adding heat map colors
+
+
+================================================================================
+TAB 6: SECTIONS OVERVIEW (8 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Section Fill Rate (32.1%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: GAUGE CHART WITH TARGET
+Why: Shows fill rate vs optimal capacity (70-85%)
+
+STEPS TO CREATE:
+1. Select Gauge Chart
+2. Add Section Fill Rate to Value
+3. Set Min: 0%, Max: 100%
+4. Set target: 75%
+5. Color: Red <50%, Yellow 50-70%, Green >70%
+6. Title: "Section Fill Rate"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2. Average Section Size (11.3)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: HISTOGRAM (Section Size Distribution)
+Why: Shows how section sizes are distributed
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Create Size Buckets (1-10, 11-20, 21-30, 31+)
+3. Add Bucket to X-axis
+4. Add Section Count to Y-axis
+5. Highlight optimal size range (15-25 students)
+6. Title: "Section Size Distribution"
+
+
+───────────────────────────────────────────────────────────────────────────────
+3. Total Section Capacity (160,633)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART (Capacity vs Enrollment)
+Why: Compares total capacity to actual enrollment
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Metric (Capacity/Enrollment) to X-axis
+3. Add Count to Y-axis
+4. Show gap between bars
+5. Calculate utilization percentage
+6. Title: "Section Capacity Utilization"
+
+
+───────────────────────────────────────────────────────────────────────────────
+4-6. Full (898) + Cancelled (589) + Below Min Enrollment (26)
+───────────────────────────────────────────────────────────────────────────────
+Current: 3 separate cards
+Recommended: STACKED BAR CHART (Section Status combined)
+Why: Shows breakdown of all section statuses
+
+STEPS TO CREATE:
+1. Delete all three cards
+2. Select Stacked Bar Chart
+3. Add Section Status to Axis
+4. Add Count to Values
+5. Use color coding (Green=Full, Red=Cancelled, Yellow=Low)
+6. Show percentages
+7. Title: "Section Status Breakdown"
+
+
+───────────────────────────────────────────────────────────────────────────────
+7. Average Credit Hours Per Section (2.7)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY COURSE LEVEL
+Why: Shows credit hours by course level (100-400)
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Course Level to X-axis
+3. Add Avg Credit Hours to Y-axis
+4. Add data labels
+5. Add reference line at 3 credits
+6. Title: "Average Credit Hours by Course Level"
+
+
+───────────────────────────────────────────────────────────────────────────────
+8. Total Credit Hours Offered (12,311)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: AREA CHART BY TERM
+Why: Shows credit hour capacity trends
+
+STEPS TO CREATE:
+1. Select Area Chart
+2. Add Term to X-axis
+3. Add Total Credit Hours to Y-axis
+4. Fill area with color
+5. Add trend line
+6. Title: "Total Credit Hours Offered by Term"
+
+
+================================================================================
+TAB 7: FEES & REVENUE (10 CARDS)
+================================================================================
+
+───────────────────────────────────────────────────────────────────────────────
+1. Tuition Revenue Dependency (0.76 = 76%)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: DONUT CHART (Revenue Mix)
+Why: Shows revenue diversification across all sources
+
+STEPS TO CREATE:
+1. Select Donut Chart
+2. Add Revenue Type (Tuition/Fees/Housing/Other) to Legend
+3. Add Revenue Amount to Values
+4. Show percentages
+5. Highlight if tuition >75% (over-dependent)
+6. Title: "Revenue Mix by Source"
+
+
+───────────────────────────────────────────────────────────────────────────────
+2. Total Students Charged (2,759)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: LINE CHART BY TERM
+Why: Shows billing trends over terms
+
+STEPS TO CREATE:
+1. Select Line Chart
+2. Add Term to X-axis
+3. Add Students Charged to Y-axis
+4. Add markers
+5. Compare to total enrollment
+6. Title: "Students Charged by Term"
+
+
+───────────────────────────────────────────────────────────────────────────────
+3-4-6-7. Revenue Components (Total, Tuition, Other, Room & Board)
+───────────────────────────────────────────────────────────────────────────────
+Current: 4 separate cards
+Recommended: WATERFALL CHART (Revenue Breakdown)
+Why: Shows how total revenue is built from components
+
+STEPS TO CREATE:
+1. Delete the 4 cards
+2. Select Waterfall Chart
+3. Add Revenue Categories to Category
+4. Add Amount to Y-axis
+5. Format as currency
+6. Show running total
+7. Title: "Revenue Breakdown Waterfall"
+
+
+───────────────────────────────────────────────────────────────────────────────
+5. Net Revenue ($8,441,004)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: KPI VISUAL WITH TREND
+Why: Shows net revenue with year-over-year comparison
+
+STEPS TO CREATE:
+1. Select KPI visual
+2. Add Net Revenue to Indicator
+3. Add Year to Trend axis
+4. Show year-over-year percentage change
+5. Format as currency
+6. Title: "Net Revenue Trend"
+
+
+───────────────────────────────────────────────────────────────────────────────
+8. Average Fee Per Student ($21,716)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: CLUSTERED COLUMN CHART BY STUDENT TYPE
+Why: Compares fees across FT/PT, Residential/Commuter
+
+STEPS TO CREATE:
+1. Select Clustered Column Chart
+2. Add Student Type to X-axis
+3. Add Average Fee to Y-axis
+4. Format as currency
+5. Add data labels
+6. Title: "Average Fee by Student Type"
+
+
+───────────────────────────────────────────────────────────────────────────────
+9. Average Tuition Per Student ($17,504)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: LINE CHART BY YEAR
+Why: Shows tuition cost trends over years
+
+STEPS TO CREATE:
+1. Select Line Chart
+2. Add Year to X-axis
+3. Add Average Tuition to Y-axis
+4. Format as currency
+5. Add trend line
+6. Title: "Average Tuition Trend"
+
+
+───────────────────────────────────────────────────────────────────────────────
+10. Technology Fees ($673,000)
+───────────────────────────────────────────────────────────────────────────────
+Current: Card
+Recommended: Include in Revenue Donut Chart (see #1)
+Why: Part of overall revenue mix visual
+
+
+================================================================================
+SUMMARY & BEST PRACTICES
+================================================================================
+
+VISUAL TYPE DISTRIBUTION (Recommended):
+- Gauge Charts: 9 (for KPIs with targets)
+- Donut/Pie Charts: 6 (for proportional breakdowns)
+- Clustered Column Charts: 12 (for comparisons)
+- Line Charts: 6 (for trends over time)
+- Stacked Bar/Column Charts: 7 (for categorical breakdowns)
+- Area Charts: 4 (for volume over time)
+- KPI Visuals: 3 (for key metrics with trends)
+- Histogram: 3 (for distributions)
+- Waterfall: 1 (for revenue composition)
+- Funnel: 1 (for conversion)
+- Tree Map: 1 (for hierarchical data)
+- Enhanced Table: 1 (keep for detailed data)
+- Total: 54 distinct visuals (down from 57 cards)
+
+BENEFITS OF THESE CHANGES:
+✓ Show trends over time instead of single points
+✓ Enable comparisons (year-over-year, group-to-group)
+✓ Reveal distributions and outliers
+✓ Provide context with targets and benchmarks
+✓ Reduce visual clutter by combining related metrics
+✓ Make data more actionable and insightful
+
+IMPLEMENTATION TIPS:
+1. Start with one tab at a time
+2. Back up your .pbix file before making changes
+3. Keep consistent color schemes across similar charts
+4. Add titles to all visuals for clarity
+5. Enable data labels where appropriate
+6. Use the Format pane to polish each visual
+7. Test interactivity (cross-filtering between visuals)
+8. Consider adding slicers for Year, Term, Department
+
+POTENTIAL DATA ISSUES TO INVESTIGATE:
+- Term-to-Term Persistence: 100% (seems too high)
+- Average Transfer GPA: 0.96 (seems too low, should be ~2.5-3.0)
+- Average Load %: 4432.3% (calculation error, should be ~100%)
+- Pass Rate: 4.0% (seems inverted, should be ~85-90%)
+- DFW Rate: 1.7% (seems too low, typically 10-20%)
+
+Review these measures to ensure calculations are correct!
+
+================================================================================
+END OF RECOMMENDATIONS
+================================================================================

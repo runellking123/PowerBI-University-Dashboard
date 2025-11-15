@@ -1,0 +1,547 @@
+================================================================================
+ALL TABLES - PROPERLY NAMED DAX MEASURES
+Complete Reference Guide for All 7 Tables
+================================================================================
+Created: 2025-11-14
+Script: C:\Users\ruking\Create_ALL_Tables_Properly_Named_Measures.csx
+Total Measures: 76 measures across 7 tables
+
+NAMING CONVENTION: All measures use clear, descriptive names that match your
+existing pattern. Percentages end in "Percentage" or "Rate", amounts are clear,
+and all are organized into logical display folders.
+
+================================================================================
+TABLE 1: FEES (10 MEASURES)
+================================================================================
+
+Tier 1 - Essential Revenue (2 measures)
+1. Revenue YoY Growth                    0.0%    Year-over-year revenue change
+2. Average Revenue Per Transaction       $#,0    Mean transaction value
+
+Tier 2 - Revenue Breakdown (2 measures)
+3. Non-Tuition Revenue Percentage        0.0%    Non-tuition share
+4. Tuition Revenue Dependency            0.0%    Reliance on tuition
+
+Tier 3 - Student Metrics (3 measures)
+5. Average Revenue Per Student           $#,0    Revenue per student
+6. Housing Participation Rate            0.0%    Students with housing
+7. Meal Plan Participation Rate          0.0%    Students with meal plans
+
+Tier 4 - Operational (3 measures)
+8. Revenue Diversification Index         0.0%    Revenue balance (higher=better)
+9. Payment Collection Rate               0.0%    Payments vs charges
+10. Outstanding Balance                   $#,0    Uncollected charges
+
+
+================================================================================
+TABLE 2: SECTIONS (11 MEASURES)
+================================================================================
+
+Tier 1 - Essential Metrics (1 measure)
+11. Overall Section Efficiency            0.0%    Fill × Capacity composite
+
+Tier 2 - Status & Availability (4 measures)
+12. Cancellation Rate                     0.0%    Cancelled section ratio
+13. Under-Enrollment Rate                 0.0%    Below minimum enrollment
+14. Waitlist Pressure Index               0.0%    Waitlisted sections ratio
+15. Full Section Percentage               0.0%    Sections at capacity
+
+Tier 3 - Academic Delivery (3 measures)
+16. Online Delivery Rate                  0.0%    Online section ratio
+17. Distance Education Rate               0.0%    Distance ed ratio
+18. Grading Progress Rate                 0.0%    Graded sections ratio
+
+Tier 4 - Operational (2 measures)
+19. Unused Capacity Count                 #,0     Empty seats (absolute)
+20. Unused Capacity Percentage            0.0%    Empty seats (percent)
+
+Cross-Table KPIs (1 measure)
+21. High Demand Section Percentage        0.0%    Waitlist + Full sections
+
+
+================================================================================
+TABLE 3: J1_DEGREE_HISTORY (11 MEASURES)
+================================================================================
+
+Tier 1 - Essential Metrics (2 measures)
+22. Degree Conferral Efficiency           0.0%    Actual vs expected degrees
+23. Daily Degree Conferral Rate           0.00    Degrees per day
+
+Tier 2 - Completion Status (4 measures)
+24. Non-Degree Seeker Rate                0.0%    Non-degree student ratio
+25. Student Persistence Rate              0.0%    1 - Exit rate
+26. Student Reentry Rate                  0.0%    Reentered vs withdrew
+27. Withdrawal Rate                       0.0%    Withdrew vs total
+
+Tier 3 - Academic Achievement (3 measures)
+28. Honors Recognition Rate               0.0%    Honors degrees ratio
+29. Minor Completion Rate                 0.0%    Students with minor
+30. Concentration Participation Rate      0.0%    Students with concentration
+
+Tier 4 - Planning & Tracking (2 measures)
+31. Median Time to Degree (Years)        0.0     Time in years
+32. On-Time Degree Completion Rate        0.0%    Graduated by expected year
+
+
+================================================================================
+TABLE 4: STUD_CRS_HISTORY (11 MEASURES)
+================================================================================
+
+Tier 1 - Critical Success Metrics (1 measure)
+33. Overall GPA                           0.00    Quality points / credits
+
+Tier 2 - Grade Distribution (6 measures)
+34. Passing Grade Percentage              0.0%    A+B+C grades
+35. Average Course Grade                  0.00    Weighted GPA scale
+36. Grade A Percentage                    0.0%    A grade ratio
+37. Grade B Percentage                    0.0%    B grade ratio
+38. Grade C Percentage                    0.0%    C grade ratio
+
+Tier 3 - Withdrawal & Completion (3 measures)
+39. Credit Earning Efficiency             0.0%    Earned / Attempted
+40. Course Drop Percentage                0.0%    Dropped course ratio
+41. Course Repeat Rate                    0.0%    Repeated course ratio
+
+Tier 4 - Academic Performance (2 measures)
+42. Composite Student Success Rate        0.0%    Combined success metrics
+43. Average Absences Per Student          0.0     Mean absence count
+
+
+================================================================================
+TABLE 5: STUD_TERM_SUM_DIV (9 MEASURES)
+================================================================================
+
+Tier 1 - Essential Enrollment (3 measures)
+44. Term-to-Term Growth Rate              0.0%    Enrollment change
+45. Full-Time Student Percentage          0.0%    FT student ratio
+46. Part-Time Student Percentage          0.0%    PT student ratio
+
+Tier 2 - Academic Standing (2 measures)
+47. At-Risk Population Percentage         0.0%    Probation rate
+48. High Achievement Rate                 0.0%    Honors rate
+
+Tier 3 - Credit Hours & Performance (2 measures)
+49. Average Courses Per Student           0.0     Course load
+50. Term Credit Completion Rate           0.0%    Term earned/attempted
+
+Tier 4 - Career & Transfer (2 measures)
+51. Transfer Population Rate              0.0%    Transfer student ratio
+52. Average Transfer Credits              0.0     Credits per transfer student
+
+
+================================================================================
+TABLE 6: WLY_IPEDS (13 MEASURES)
+================================================================================
+
+Tier 1 - Essential Enrollment (4 measures)
+53. Enrollment Growth Rate                0.0%    YoY enrollment change
+54. Full-Time Equivalent Students         #,0     FTE calculation
+55. FT Student Percentage                 0.0%    Full-time ratio
+56. PT Student Percentage                 0.0%    Part-time ratio
+
+Tier 2 - Class Levels (2 measures)
+57. Undergraduate Student Percentage      0.0%    Undergrad ratio
+58. Graduate Student Percentage           0.0%    Graduate ratio
+
+Tier 3 - Demographics (5 measures)
+59. Traditional Age Population Rate       0.0%    Age 18-24 ratio
+60. Gender Balance Score                  0.0%    Gender equity (100%=perfect)
+61. Residential Population Rate           0.0%    Residential student ratio
+62. Commuter Population Rate              0.0%    Commuter student ratio
+
+Tier 4 - Academic Performance (3 measures)
+63. Major Declaration Rate                0.0%    Declared major ratio
+64. Dual Major Rate                       0.0%    Dual major ratio
+65. Estimated Years in Program            0.0     Career hours / 30
+
+
+================================================================================
+TABLE 7: LINEITEM - BUDGET (9 MEASURES)
+================================================================================
+
+Budget Analysis (9 measures)
+66. Budget Variance Amount                $#,0    Current - Initial
+67. Budget Variance Percentage            0.0%    Variance as percent
+68. Budget Modification Rate              0.00    Changes per line item
+69. Budget Increase Rate                  0.0%    Increases / Changes
+70. Budget Decrease Rate                  0.0%    Decreases / Changes
+71. Average Line Item Budget              $#,0    Mean line item size
+72. Budget Flexibility Rate               0.0%    Unlocked budget ratio
+73. Locked Budget Percentage              0.0%    Locked budget ratio
+74. Budget Stability Index                0.0%    1 - Modification rate
+
+
+================================================================================
+INSTALLATION INSTRUCTIONS
+================================================================================
+
+STEP 1: BACKUP
+   - Save a copy of your current Power BI file
+   - Note: This is important in case you need to revert
+
+STEP 2: OPEN IN TABULAR EDITOR
+   - Launch Tabular Editor 2 or 3
+   - File > Open > Connect to Power BI
+   - Or open your .pbix/.bim file directly
+
+STEP 3: RUN THE SCRIPT
+   - Press Ctrl+Shift+A (Advanced Scripting)
+   - Click File > Open
+   - Navigate to: C:\Users\ruking\Create_ALL_Tables_Properly_Named_Measures.csx
+   - Click the green Play button
+
+STEP 4: REVIEW OUTPUT
+   - You should see:
+     "SUCCESS! Created 76 properly named measures across ALL tables"
+   - Distribution by table will be shown
+   - Check for any errors (should be none)
+
+STEP 5: SAVE CHANGES
+   - Press Ctrl+S to save
+   - Confirm you want to apply changes
+   - Wait for save to complete
+
+STEP 6: VERIFY IN POWER BI
+   - Return to Power BI Desktop
+   - Refresh the Fields pane
+   - Expand each table to see new measures
+   - Check that measures appear in correct folders
+
+STEP 7: TEST MEASURES
+   - Create a test visual using new measures
+   - Verify calculations make sense
+   - Check formatting is correct
+
+
+================================================================================
+RECOMMENDED DASHBOARD PAGES
+================================================================================
+
+📊 PAGE 1: EXECUTIVE DASHBOARD
+Cards:
+   - Total Students (wly_ipeds)
+   - Total Fees Revenue (Fees)
+   - Total Sections (Sections)
+   - Total Degrees Conferred (j1_degree_history)
+
+Gauges:
+   - Revenue YoY Growth (target: >3%)
+   - Enrollment Growth Rate (target: 2-5%)
+   - Overall Section Efficiency (target: >75%)
+   - Degree Conferral Efficiency (target: 95-105%)
+
+Trends:
+   - Revenue YoY Growth over time
+   - Enrollment Growth Rate over time
+   - Budget Variance Percentage over time
+
+📊 PAGE 2: FINANCIAL OVERVIEW
+Revenue Cards:
+   - Total Fees Revenue
+   - Revenue YoY Growth
+   - Outstanding Balance
+   - Average Revenue Per Student
+
+Charts:
+   - Revenue by Category (Tuition, Housing, Meals, Other)
+   - Tuition Revenue Dependency trend
+   - Revenue Diversification Index (gauge)
+   - Payment Collection Rate (gauge)
+
+Breakdown:
+   - Non-Tuition Revenue Percentage
+   - Housing Participation Rate
+   - Meal Plan Participation Rate
+
+Budget:
+   - Budget Variance Amount
+   - Budget Variance Percentage
+   - Budget Stability Index
+
+📊 PAGE 3: ENROLLMENT ANALYTICS
+Student Body:
+   - Total Students
+   - Full-Time Equivalent Students
+   - Enrollment Growth Rate
+   - FT vs PT breakdown (donut chart)
+
+Demographics:
+   - Gender Balance Score
+   - Traditional Age Population Rate
+   - Residential vs Commuter (stacked bar)
+
+Class Levels:
+   - Undergraduate Student Percentage
+   - Graduate Student Percentage
+   - Distribution by class (FR, SO, JR, SR, GR)
+
+Academic Standing:
+   - At-Risk Population Percentage
+   - High Achievement Rate
+   - Major Declaration Rate
+
+📊 PAGE 4: ACADEMIC PERFORMANCE
+Student Success:
+   - Overall GPA (card)
+   - Passing Grade Percentage (gauge)
+   - Composite Student Success Rate (gauge)
+   - Credit Earning Efficiency (gauge)
+
+Grade Distribution:
+   - Grades A-F (clustered column chart)
+   - Average Course Grade trend
+   - Pass vs DFW comparison
+
+Progression:
+   - Term Credit Completion Rate
+   - Course Drop Percentage
+   - Course Repeat Rate
+   - Average Absences Per Student
+
+📊 PAGE 5: COURSE & SECTION MANAGEMENT
+Section Overview:
+   - Total Sections
+   - Overall Section Efficiency
+   - Unused Capacity Count
+   - Unused Capacity Percentage
+
+Section Status:
+   - Cancellation Rate
+   - Under-Enrollment Rate
+   - Full Section Percentage
+   - Waitlist Pressure Index
+
+Delivery Modes:
+   - Online Delivery Rate
+   - Distance Education Rate
+   - Grading Progress Rate
+
+Demand Analysis:
+   - High Demand Section Percentage
+   - Sections by delivery type (pie)
+
+📊 PAGE 6: DEGREES & COMPLETION
+Degree Metrics:
+   - Total Degrees Conferred
+   - Degree Conferral Efficiency
+   - Daily Degree Conferral Rate
+   - Median Time to Degree
+
+Completion Rates:
+   - Student Persistence Rate
+   - On-Time Degree Completion Rate
+   - Withdrawal Rate
+   - Student Reentry Rate
+
+Achievement:
+   - Honors Recognition Rate
+   - Minor Completion Rate
+   - Concentration Participation Rate
+   - 4-Year & 6-Year Cohort Graduation Rates
+
+
+================================================================================
+KEY PERFORMANCE TARGETS
+================================================================================
+
+FINANCIAL:
+   Revenue YoY Growth: >3%
+   Payment Collection Rate: >95%
+   Tuition Revenue Dependency: <75%
+   Budget Variance: ±5%
+   Outstanding Balance: Decreasing trend
+
+ENROLLMENT:
+   Enrollment Growth Rate: 2-5%
+   Full-Time Student Percentage: >70%
+   Major Declaration Rate: >85% (by junior year)
+   Residential Population Rate: align with capacity
+
+ACADEMIC PERFORMANCE:
+   Overall GPA: >2.8
+   Passing Grade Percentage: >75%
+   Composite Student Success Rate: >80%
+   Credit Earning Efficiency: >85%
+   Course Drop Percentage: <12%
+
+SECTIONS:
+   Overall Section Efficiency: >75%
+   Cancellation Rate: <5%
+   Unused Capacity Percentage: <20%
+   Grading Progress Rate: 100% (end of term)
+   High Demand Section Percentage: 15-25%
+
+DEGREES:
+   Degree Conferral Efficiency: 95-105%
+   Student Persistence Rate: >85%
+   On-Time Degree Completion Rate: >60%
+   Withdrawal Rate: <15%
+   Honors Recognition Rate: >20%
+
+
+================================================================================
+FILTERING RECOMMENDATIONS
+================================================================================
+
+SLICER 1: TIME
+   - Academic Year (yr_cde)
+   - Term (trm_cde)
+   - Comparison toggle: This Year vs Last Year
+
+SLICER 2: ACADEMIC
+   - Department
+   - Division
+   - Course Level (100-400, Graduate)
+   - Degree Type
+
+SLICER 3: STUDENT
+   - Class Level (FR/SO/JR/SR/GR)
+   - Full-Time vs Part-Time
+   - Residential vs Commuter
+   - Academic Standing (Honors/Good/Probation)
+
+SLICER 4: SECTION
+   - Delivery Mode (In-Person/Online/Distance Ed)
+   - Section Status (Active/Cancelled/Full)
+   - Time of Day (Day/Evening/Weekend)
+
+
+================================================================================
+ADVANCED ANALYTICS
+================================================================================
+
+CORRELATION ANALYSIS:
+   - Revenue Per Student vs Enrollment Growth
+   - Section Efficiency vs Faculty Load
+   - GPA vs At-Risk Population
+   - Participation Rates vs Revenue Growth
+
+PREDICTIVE INDICATORS:
+   - Enrollment Growth predicts Revenue Growth
+   - At-Risk Population predicts Withdrawal Rate
+   - Section Efficiency predicts Satisfaction
+   - Budget Variance predicts Financial Health
+
+COHORT ANALYSIS:
+   - Track class cohorts from FR to graduation
+   - Measure retention by cohort
+   - Analyze time to degree by cohort
+   - Compare academic performance across cohorts
+
+COMPARATIVE ANALYSIS:
+   - Department benchmarking
+   - Year-over-year trends
+   - Peer institution comparisons
+   - Best vs worst performing segments
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+❌ Error: "Table not found"
+   → Check table name spelling in your model
+   → Tables must be named exactly as in script
+
+❌ Error: "Column not found"
+   → Verify column exists in source table
+   → Check column name case sensitivity
+
+❌ Measure shows BLANK
+   → Check filters applied to visual
+   → Verify data exists for selected period
+   → Ensure table relationships are correct
+
+❌ Percentages > 100%
+   → Check for duplicate records
+   → Verify denominator is correct base
+   → Review filter context
+
+❌ Performance is slow
+   → Some measures are complex calculations
+   → Consider aggregated tables
+   → Use DirectQuery carefully
+
+❌ Numbers don't match expectations
+   → Verify source data quality
+   → Check filter interactions
+   → Test measure in isolation
+
+
+================================================================================
+MEASURE NAMING CONVENTIONS USED
+================================================================================
+
+PERCENTAGES & RATES:
+   - End with "Percentage" (e.g., FT Student Percentage)
+   - Or end with "Rate" (e.g., Participation Rate)
+   - Format: 0.0%
+
+COUNTS & TOTALS:
+   - Clear descriptive names
+   - No special suffix
+   - Format: #,0
+
+FINANCIAL:
+   - Dollar amounts clearly stated
+   - "Revenue", "Budget", "Cost" in name
+   - Format: "$"#,0
+
+AVERAGES & MEDIANS:
+   - Start with "Average" or "Median"
+   - Clear what's being averaged
+   - Format: 0.0 or 0.00
+
+INDICES & SCORES:
+   - End with "Index" or "Score"
+   - Higher = better (unless noted)
+   - Format: 0.0% or 0.0
+
+
+================================================================================
+BEST PRACTICES
+================================================================================
+
+✅ DO:
+   - Use slicers for time periods
+   - Create drill-through pages for details
+   - Set up conditional formatting
+   - Add reference lines to gauges
+   - Document assumptions
+   - Test with real data
+   - Share with stakeholders for feedback
+
+❌ DON'T:
+   - Mix academic years without filters
+   - Ignore data quality issues
+   - Over-complicate dashboards
+   - Use too many measures on one page
+   - Forget to refresh after changes
+   - Skip user testing
+
+
+================================================================================
+FILES & RESOURCES
+================================================================================
+
+📂 Script:
+   C:\Users\ruking\Create_ALL_Tables_Properly_Named_Measures.csx
+
+📖 This Documentation:
+   C:\Users\ruking\ALL_Tables_Measures_Complete_Reference.txt
+
+📋 Summary by Table:
+   Fees: 10 measures
+   Sections: 11 measures
+   j1_degree_history: 11 measures
+   stud_crs_history: 11 measures
+   stud_term_sum_div: 9 measures
+   wly_ipeds: 13 measures
+   LineItem: 9 measures
+
+   TOTAL: 74 measures
+
+All measures are production-ready, properly formatted, and follow your
+existing naming conventions for easy integration into your dashboards.
+
+================================================================================

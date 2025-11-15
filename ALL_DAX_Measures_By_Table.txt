@@ -1,0 +1,921 @@
+================================================================================
+ALL DAX MEASURES BY TABLE - COMPLETE FORMULAS
+================================================================================
+Created: 2025-11-14
+Total: 74 measures across 7 tables
+
+Each measure includes:
+  - Measure name (clearly labeled)
+  - Display Folder location
+  - Format string
+  - Complete DAX formula
+
+================================================================================
+TABLE 1: FEES (10 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 1: Revenue YoY Growth
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Revenue
+Format: 0.0%
+
+Revenue YoY Growth =
+VAR CurrentRevenue = [Total Fees Revenue]
+VAR PriorRevenue =
+    CALCULATE(
+        [Total Fees Revenue],
+        DATEADD(Year_Definition[Date], -1, YEAR)
+    )
+RETURN DIVIDE(CurrentRevenue - PriorRevenue, PriorRevenue, 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 2: Average Revenue Per Transaction
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Revenue
+Format: "$"#,0.00
+
+Average Revenue Per Transaction =
+DIVIDE([Total Fees Revenue], [Total Fee Transactions], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 3: Non-Tuition Revenue Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Revenue Breakdown
+Format: 0.0%
+
+Non-Tuition Revenue Percentage =
+DIVIDE([Fees Revenue (Non-Tuition)], [Total Fees Revenue], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 4: Tuition Revenue Dependency
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Revenue Breakdown
+Format: 0.0%
+
+Tuition Revenue Dependency =
+DIVIDE([Tuition Revenue], [Total Fees Revenue], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 5: Average Revenue Per Student
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Student Metrics
+Format: "$"#,0
+
+Average Revenue Per Student =
+DIVIDE([Total Fees Revenue], [Total Students Charged], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 6: Housing Participation Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Student Metrics
+Format: 0.0%
+
+Housing Participation Rate =
+DIVIDE([Students with Housing Charges], [Total Students Charged], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 7: Meal Plan Participation Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Student Metrics
+Format: 0.0%
+
+Meal Plan Participation Rate =
+DIVIDE([Students with Meal Plans], [Total Students Charged], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 8: Revenue Diversification Index
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Operational
+Format: 0.0%
+
+Revenue Diversification Index =
+VAR TuitionPct = DIVIDE([Tuition Revenue], [Total Fees Revenue], 0)
+VAR HousingPct = DIVIDE([Housing Revenue], [Total Fees Revenue], 0)
+VAR MealPct = DIVIDE([Meal Plan Revenue], [Total Fees Revenue], 0)
+VAR OtherPct = DIVIDE([Other Fees Revenue], [Total Fees Revenue], 0)
+VAR MaxConcentration = MAX(TuitionPct, MAX(HousingPct, MAX(MealPct, OtherPct)))
+RETURN 1 - MaxConcentration
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 9: Payment Collection Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Operational
+Format: 0.0%
+
+Payment Collection Rate =
+DIVIDE([Total Payments Amount], [Total Charges Amount], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 10: Outstanding Balance
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Operational
+Format: "$"#,0
+
+Outstanding Balance =
+[Total Charges Amount] - [Total Payments Amount]
+
+
+================================================================================
+TABLE 2: SECTIONS (11 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 11: Overall Section Efficiency
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Metrics
+Format: 0.0%
+
+Overall Section Efficiency =
+[Section Fill Rate] * [Capacity Utilization Rate]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 12: Cancellation Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Status & Availability
+Format: 0.0%
+
+Cancellation Rate =
+DIVIDE([Cancelled Sections], [Total Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 13: Under-Enrollment Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Status & Availability
+Format: 0.0%
+
+Under-Enrollment Rate =
+DIVIDE([Sections Below Minimum Enrollment], [Active Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 14: Waitlist Pressure Index
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Status & Availability
+Format: 0.0%
+
+Waitlist Pressure Index =
+DIVIDE([Waitlisted Sections], [Total Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 15: Full Section Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Status & Availability
+Format: 0.0%
+
+Full Section Percentage =
+DIVIDE([Full Sections], [Active Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 16: Online Delivery Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Delivery
+Format: 0.0%
+
+Online Delivery Rate =
+DIVIDE([Online Sections], [Total Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 17: Distance Education Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Delivery
+Format: 0.0%
+
+Distance Education Rate =
+DIVIDE([Distance Education Sections], [Total Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 18: Grading Progress Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Delivery
+Format: 0.0%
+
+Grading Progress Rate =
+DIVIDE([Sections with Grades Entered], [Active Sections], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 19: Unused Capacity Count
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Operational
+Format: #,0
+
+Unused Capacity Count =
+[Total Section Capacity] - [Total Section Enrollment]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 20: Unused Capacity Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Operational
+Format: 0.0%
+
+Unused Capacity Percentage =
+DIVIDE([Unused Capacity Count], [Total Section Capacity], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 21: High Demand Section Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Cross-Table KPIs
+Format: 0.0%
+
+High Demand Section Percentage =
+VAR HighDemand = [Waitlisted Sections] + [Full Sections]
+RETURN DIVIDE(HighDemand, [Total Sections], 0)
+
+
+================================================================================
+TABLE 3: J1_DEGREE_HISTORY (11 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 22: Degree Conferral Efficiency
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Metrics
+Format: 0.0%
+
+Degree Conferral Efficiency =
+DIVIDE([Total Degrees Conferred], [Expected Graduates This Year], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 23: Daily Degree Conferral Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Metrics
+Format: 0.00
+
+Daily Degree Conferral Rate =
+VAR TotalDegrees = [Total Degrees Conferred]
+VAR DaysInPeriod = COUNTROWS(ALLSELECTED(Year_Definition))
+RETURN DIVIDE(TotalDegrees, MAX(DaysInPeriod, 1), 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 24: Non-Degree Seeker Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Completion Status
+Format: 0.0%
+
+Non-Degree Seeker Rate =
+DIVIDE(
+    [Non-Degree Seeking Students],
+    [Total Degree-Seeking Students] + [Non-Degree Seeking Students],
+    0
+)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 25: Student Persistence Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Completion Status
+Format: 0.0%
+
+Student Persistence Rate =
+1 - DIVIDE([Students Who Exited], [Total Degree-Seeking Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 26: Student Reentry Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Completion Status
+Format: 0.0%
+
+Student Reentry Rate =
+DIVIDE([Students Who Reentered], [Students Who Withdrew], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 27: Withdrawal Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Completion Status
+Format: 0.0%
+
+Withdrawal Rate =
+DIVIDE([Students Who Withdrew], [Total Degree-Seeking Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 28: Honors Recognition Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Achievement
+Format: 0.0%
+
+Honors Recognition Rate =
+DIVIDE([Degrees with Honors], [Total Degrees Conferred], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 29: Minor Completion Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Achievement
+Format: 0.0%
+
+Minor Completion Rate =
+DIVIDE([Students with Minor], [Total Degree-Seeking Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 30: Concentration Participation Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Academic Achievement
+Format: 0.0%
+
+Concentration Participation Rate =
+DIVIDE([Students with Concentration], [Total Degree-Seeking Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 31: Median Time to Degree (Years)
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Planning & Tracking
+Format: 0.0
+
+Median Time to Degree (Years) =
+DIVIDE([Average Time to Degree (Days)], 365, 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 32: On-Time Degree Completion Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Planning & Tracking
+Format: 0.0%
+
+On-Time Degree Completion Rate =
+VAR OnTimeGraduates =
+    CALCULATE(
+        DISTINCTCOUNT(j1_degree_history[ID_NUM]),
+        YEAR(j1_degree_history[DTE_DEGR_CONFERRED]) <= j1_degree_history[EXPECT_GRAD_YR]
+    )
+RETURN DIVIDE(OnTimeGraduates, [Students with Degrees Conferred], 0)
+
+
+================================================================================
+TABLE 4: STUD_CRS_HISTORY (11 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 33: Overall GPA
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Critical Success Metrics
+Format: 0.00
+
+Overall GPA =
+DIVIDE(
+    SUM(stud_crs_history[QualityPoints]),
+    SUM(stud_crs_history[CreditHours]),
+    0
+)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 34: Passing Grade Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Grade Distribution
+Format: 0.0%
+
+Passing Grade Percentage =
+VAR PassingGrades = [A Grades Count] + [B Grades Count] + [C Grades Count]
+RETURN DIVIDE(PassingGrades, [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 35: Average Course Grade
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Grade Distribution
+Format: 0.00
+
+Average Course Grade =
+VAR WeightedGrades =
+    ([A Grades Count] * 4.0) +
+    ([B Grades Count] * 3.0) +
+    ([C Grades Count] * 2.0) +
+    ([D Grades Count] * 1.0) +
+    ([F Grades Count] * 0.0)
+VAR TotalGraded =
+    [A Grades Count] + [B Grades Count] + [C Grades Count] +
+    [D Grades Count] + [F Grades Count]
+RETURN DIVIDE(WeightedGrades, TotalGraded, 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 36: Grade A Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Grade Distribution
+Format: 0.0%
+
+Grade A Percentage =
+DIVIDE([A Grades Count], [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 37: Grade B Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Grade Distribution
+Format: 0.0%
+
+Grade B Percentage =
+DIVIDE([B Grades Count], [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 38: Grade C Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Grade Distribution
+Format: 0.0%
+
+Grade C Percentage =
+DIVIDE([C Grades Count], [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 39: Credit Earning Efficiency
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Withdrawal & Completion
+Format: 0.0%
+
+Credit Earning Efficiency =
+DIVIDE([Total Credit Hours Earned], [Total Credit Hours Attempted], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 40: Course Drop Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Withdrawal & Completion
+Format: 0.0%
+
+Course Drop Percentage =
+DIVIDE([Courses Dropped], [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 41: Course Repeat Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Withdrawal & Completion
+Format: 0.0%
+
+Course Repeat Rate =
+DIVIDE([Repeated Courses], [Total Course Enrollments], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 42: Composite Student Success Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Academic Performance
+Format: 0.0%
+
+Composite Student Success Rate =
+VAR AvgSuccess = ([Pass Rate] + [Success Rate] + [Course Completion Rate]) / 3
+RETURN AvgSuccess
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 43: Average Absences Per Student
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Academic Performance
+Format: 0.0
+
+Average Absences Per Student =
+DIVIDE(
+    SUM(stud_crs_history[Absences]),
+    DISTINCTCOUNT(stud_crs_history[StudentID]),
+    0
+)
+
+
+================================================================================
+TABLE 5: STUD_TERM_SUM_DIV (9 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 44: Term-to-Term Growth Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+Term-to-Term Growth Rate =
+VAR CurrentTerm = [Unique Students Enrolled]
+VAR PriorTerm =
+    CALCULATE(
+        [Unique Students Enrolled],
+        DATEADD(Year_Definition[Date], -1, YEAR)
+    )
+RETURN DIVIDE(CurrentTerm - PriorTerm, PriorTerm, 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 45: Full-Time Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+Full-Time Student Percentage =
+DIVIDE(
+    [Full-Time Enrollment (Term)],
+    [Unique Students Enrolled],
+    0
+)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 46: Part-Time Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+Part-Time Student Percentage =
+DIVIDE(
+    [Part-Time Enrollment (Term)],
+    [Unique Students Enrolled],
+    0
+)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 47: At-Risk Population Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Academic Standing
+Format: 0.0%
+
+At-Risk Population Percentage =
+[Academic Probation Rate]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 48: High Achievement Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Academic Standing
+Format: 0.0%
+
+High Achievement Rate =
+[Academic Honors Rate]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 49: Average Courses Per Student
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Credit Hours & Performance
+Format: 0.0
+
+Average Courses Per Student =
+[Average Number of Courses]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 50: Term Credit Completion Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Credit Hours & Performance
+Format: 0.0%
+
+Term Credit Completion Rate =
+DIVIDE([Total Term Credit Hours Earned], [Total Term Credit Hours Attempted], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 51: Transfer Population Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Career & Transfer
+Format: 0.0%
+
+Transfer Population Rate =
+DIVIDE([Students with Transfer Credits], [Unique Students Enrolled], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 52: Average Transfer Credits
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Career & Transfer
+Format: 0.0
+
+Average Transfer Credits =
+DIVIDE([Transfer Hours Accepted], [Students with Transfer Credits], 0)
+
+
+================================================================================
+TABLE 6: WLY_IPEDS (13 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 53: Enrollment Growth Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+Enrollment Growth Rate =
+VAR CurrentStudents = [Total Students]
+VAR PriorStudents =
+    CALCULATE(
+        [Total Students],
+        DATEADD(Year_Definition[Date], -1, YEAR)
+    )
+RETURN DIVIDE(CurrentStudents - PriorStudents, PriorStudents, 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 54: Full-Time Equivalent Students
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: #,0
+
+Full-Time Equivalent Students =
+[Full-Time Students] + ([Part-Time Students] * 0.33)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 55: FT Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+FT Student Percentage =
+DIVIDE([Full-Time Students], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 56: PT Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 1 - Essential Enrollment
+Format: 0.0%
+
+PT Student Percentage =
+DIVIDE([Part-Time Students], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 57: Undergraduate Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Class Levels
+Format: 0.0%
+
+Undergraduate Student Percentage =
+VAR UndergradTotal =
+    [Freshman (Class 00)] + [Sophomore (Class 01)] +
+    [Junior (Class 02)] + [Senior (Class 03)]
+RETURN DIVIDE(UndergradTotal, [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 58: Graduate Student Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 2 - Class Levels
+Format: 0.0%
+
+Graduate Student Percentage =
+DIVIDE([Graduate Students (Class GR)], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 59: Traditional Age Population Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Demographics
+Format: 0.0%
+
+Traditional Age Population Rate =
+VAR TraditionalAge =
+    CALCULATE(
+        DISTINCTCOUNT(wly_ipeds[ID_NUM]),
+        wly_ipeds[AGE] >= 18,
+        wly_ipeds[AGE] <= 24
+    )
+RETURN DIVIDE(TraditionalAge, [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 60: Gender Balance Score
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Demographics
+Format: 0.0%
+
+Gender Balance Score =
+VAR MalePercent = DIVIDE([Male Students], [Total Students], 0)
+VAR FemalePercent = DIVIDE([Female Students], [Total Students], 0)
+RETURN 1 - ABS(MalePercent - FemalePercent)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 61: Residential Population Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Demographics
+Format: 0.0%
+
+Residential Population Rate =
+DIVIDE([Residential Students], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 62: Commuter Population Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 3 - Demographics
+Format: 0.0%
+
+Commuter Population Rate =
+DIVIDE([Commuter Students], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 63: Major Declaration Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Academic Performance
+Format: 0.0%
+
+Major Declaration Rate =
+DIVIDE([Students with Declared Major], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 64: Dual Major Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Academic Performance
+Format: 0.0%
+
+Dual Major Rate =
+DIVIDE([Students with Dual Major], [Total Students], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 65: Estimated Years in Program
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Tier 4 - Academic Performance
+Format: 0.0
+
+Estimated Years in Program =
+DIVIDE([Average Career Hours Earned], 30, 0)
+
+
+================================================================================
+TABLE 7: LINEITEM - BUDGET (9 MEASURES)
+================================================================================
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 66: Budget Variance Amount
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: "$"#,0
+
+Budget Variance Amount =
+[Total Budget (Current)] - [Total Budget (Initial)]
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 67: Budget Variance Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Budget Variance Percentage =
+DIVIDE(
+    [Total Budget (Current)] - [Total Budget (Initial)],
+    [Total Budget (Initial)],
+    0
+)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 68: Budget Modification Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.00
+
+Budget Modification Rate =
+DIVIDE([Budget Changes Made], [Total Line Items], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 69: Budget Increase Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Budget Increase Rate =
+DIVIDE([Budget Increase Count], [Budget Changes Made], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 70: Budget Decrease Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Budget Decrease Rate =
+DIVIDE([Budget Decrease Count], [Budget Changes Made], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 71: Average Line Item Budget
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: "$"#,0
+
+Average Line Item Budget =
+DIVIDE([Total Budget (Current)], [Total Line Items], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 72: Budget Flexibility Rate
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Budget Flexibility Rate =
+DIVIDE([Unlocked Budget Amount], [Total Budget (Current)], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 73: Locked Budget Percentage
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Locked Budget Percentage =
+VAR LockedTotal = [Locked Approved Budget] + [Locked Initial Budget]
+RETURN DIVIDE(LockedTotal, [Total Budget (Current)], 0)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+MEASURE 74: Budget Stability Index
+═══════════════════════════════════════════════════════════════════════════════
+Display Folder: Budget Analysis
+Format: 0.0%
+
+Budget Stability Index =
+-- Lower change rate = higher stability
+1 - [Budget Modification Rate]
+
+
+================================================================================
+SUMMARY BY TABLE
+================================================================================
+
+Fees Table: 10 measures
+  - Tier 1: 2 measures (Revenue YoY Growth, Average Revenue Per Transaction)
+  - Tier 2: 2 measures (Revenue percentages and dependency)
+  - Tier 3: 3 measures (Student participation metrics)
+  - Tier 4: 3 measures (Diversification, collection, balance)
+
+Sections Table: 11 measures
+  - Tier 1: 1 measure (Overall efficiency)
+  - Tier 2: 4 measures (Status and availability)
+  - Tier 3: 3 measures (Delivery modes)
+  - Tier 4: 2 measures (Capacity metrics)
+  - Cross-Table: 1 measure (Demand index)
+
+j1_degree_history Table: 11 measures
+  - Tier 1: 2 measures (Conferral efficiency)
+  - Tier 2: 4 measures (Completion status)
+  - Tier 3: 3 measures (Academic achievement)
+  - Tier 4: 2 measures (Time tracking)
+
+stud_crs_history Table: 11 measures
+  - Tier 1: 1 measure (Overall GPA)
+  - Tier 2: 6 measures (Grade distribution)
+  - Tier 3: 3 measures (Withdrawal and completion)
+  - Tier 4: 2 measures (Performance metrics)
+
+stud_term_sum_div Table: 9 measures
+  - Tier 1: 3 measures (Enrollment metrics)
+  - Tier 2: 2 measures (Academic standing)
+  - Tier 3: 2 measures (Credit hours)
+  - Tier 4: 2 measures (Transfer metrics)
+
+wly_ipeds Table: 13 measures
+  - Tier 1: 4 measures (Enrollment and FTE)
+  - Tier 2: 2 measures (Class levels)
+  - Tier 3: 5 measures (Demographics)
+  - Tier 4: 3 measures (Academic performance)
+
+LineItem (Budget) Table: 9 measures
+  - All in Budget Analysis folder
+  - Variance, rates, and stability metrics
+
+================================================================================
+TOTAL: 74 MEASURES
+================================================================================
+
+All measures are ready to be copied directly into Power BI's DAX editor.
+
+HOW TO USE THIS FILE:
+1. Find the measure you want to create
+2. Copy everything from the measure name line (e.g., "Revenue YoY Growth =")
+   through the end of the formula
+3. In Power BI, select the appropriate table
+4. Click "New Measure" in the ribbon
+5. Paste the DAX formula
+6. Press Enter
+7. Set the format string and display folder in the Properties pane
+
+================================================================================
