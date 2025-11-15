@@ -1,0 +1,23 @@
+# Power BI temporary files
+*.pbit
+*.pbix.bak
+~$*.pbix
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+
+# Personal credentials or secrets
+*.env
+credentials.json
+
+# Large data exports (add if needed)
+# *.csv
+# *.xlsx
