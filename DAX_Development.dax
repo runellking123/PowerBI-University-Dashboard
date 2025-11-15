@@ -1,0 +1,111 @@
+// ============================================================================
+// DAX MEASURE DEVELOPMENT FILE
+// Use with GitHub Copilot for AI-assisted measure creation
+// ============================================================================
+//
+// HOW TO USE WITH COPILOT:
+// 1. Write a comment describing what you need
+// 2. Press Enter and start typing the measure name
+// 3. Copilot will suggest the complete formula
+// 4. Press Tab to accept, or keep typing to refine
+//
+// TIPS:
+// - Be specific in comments (mention table names, column names)
+// - Start with "Calculate" or "Count" or "Sum" for clarity
+// - Mention the business context (e.g., "for retention analysis")
+// ============================================================================
+
+// ============================================================================
+// ENROLLMENT MEASURES
+// ============================================================================
+
+// Calculate total headcount of unique students
+Total Students =
+DISTINCTCOUNT(wly_ipeds[ID_NUM])
+
+// Calculate year-over-year enrollment growth percentage
+Enrollment Growth Rate =
+VAR CurrentYear = [Total Students]
+VAR PriorYear = CALCULATE([Total Students], DATEADD(Year_Definition[Date], -1, YEAR))
+RETURN DIVIDE(CurrentYear - PriorYear, PriorYear, 0)
+
+// Calculate the percentage of full-time students (12+ credits)
+
+
+// Calculate first-time freshman count
+
+
+// Calculate transfer student percentage
+
+
+// ============================================================================
+// RETENTION & PERSISTENCE MEASURES
+// ============================================================================
+
+// Calculate fall-to-fall retention rate (students who return next fall)
+
+
+// Calculate term-to-term persistence rate
+
+
+// Calculate 4-year graduation rate for cohorts
+
+
+// Calculate 6-year graduation rate for cohorts
+
+
+// ============================================================================
+// ACADEMIC PERFORMANCE MEASURES
+// ============================================================================
+
+// Calculate overall institutional GPA
+
+
+// Calculate DFW rate (percentage of D, F, and W grades)
+
+
+// Calculate course success rate (A, B, C grades)
+
+
+// Calculate credit completion ratio (earned / attempted)
+
+
+// ============================================================================
+// FINANCIAL MEASURES
+// ============================================================================
+
+// Calculate average tuition revenue per student
+
+
+// Calculate tuition dependency ratio (tuition / total revenue)
+
+
+// Calculate net revenue (total revenue - total expenses)
+
+
+// ============================================================================
+// FACULTY WORKLOAD MEASURES
+// ============================================================================
+
+// Calculate average course load per faculty member
+
+
+// Calculate student-to-faculty ratio
+
+
+// Calculate percentage of sections taught by full-time faculty
+
+
+// ============================================================================
+// SECTION EFFICIENCY MEASURES
+// ============================================================================
+
+// Calculate section fill rate (enrollment / capacity)
+
+
+// Calculate average section size
+
+
+// Calculate percentage of cancelled sections
+
+
