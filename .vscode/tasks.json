@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run C# Script",
+            "type": "shell",
+            "command": "dotnet-script",
+            "args": ["${file}"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run Tabular Editor Script on PBIX",
+            "type": "shell",
+            "command": "& 'C:\\Program Files (x86)\\Tabular Editor\\TabularEditor.exe'",
+            "args": [
+                "\"${workspaceFolder}\\Final Power Bi File.pbix\"",
+                "-S",
+                "\"${file}\""
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
